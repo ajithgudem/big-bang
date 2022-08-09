@@ -1,95 +1,9 @@
-[Project Managers]
-# protect individual files in the root directory such as the CODEOWNERS file
-/*                     @runyontr @joshwolf @megamind @phillip.record
-# Recursive protection for directories
-/.gitlab-ci/           @runyontr @joshwolf @megamind @phillip.record
-/.gitlab/              @runyontr @joshwolf @megamind @phillip.record
-/base/                 @runyontr @joshwolf @megamind @phillip.record
-/chart/                @runyontr @joshwolf @megamind @phillip.record
-/charter/              @runyontr @joshwolf @megamind @phillip.record
-/hack/                 @runyontr @joshwolf @megamind @phillip.record
-/scripts/              @runyontr @joshwolf @megamind @phillip.record
-/tests/                @runyontr @joshwolf @megamind @phillip.record
+[Project Maintainers]
+*                              @brandencobb @micah.nagel @michaelmcleroy @ryan.thompson.44 @runyontr @ryan.j.garcia
 
 
 [Docs Owners]
 # Allow any one of the listed codeowners to approve merges to the documentation 
-# Does not allow the creator of the merge request to be the approveer.
-/docs/                @michaelmcleroy @egoode @aaronbeger @aaron.ruse @branden.cobb @shouseba @chadningle @chuck.laverde @daryndecker @dyoung @egnoriega @egoode @iahmad @jcookehg   
-                      @jasonkrause @jpower_rfed @jkayse @jdale @joshwolf @karchaf @kavitha @kenna81 @kevin.wilder @killian.byrne @mgauto @msbrown47 @mdutton @matthew.kaiser 
-                      @michaelmcleroy @nick_tetrate @racosta @rkernick @runyontr @ryan.j.garcia @sean.deprefontaine @seanthomaswilliams1 @thomas.burton @Ozzie100 @tsiddique1 
-                      @toladipupo @visuth.dy @zdzielinski @micah.nagel @LynnStill 
-
-
-################################################
-# The following entries are for optional approval. 
-# They are only included to document contacts and have no impact on approval requirements
-################################################
-
-^[Kustomize Base Owners]
-base/                 @michaelmcleroy
-
-^[CI Owners]
-.gitlab-ci/           @toladipupo
-tests/                @toladipupo
-
-^[Hack Owners]
-scripts/              @toladipupo @michaelmcleroy @egoode
-hack/                 @toladipupo @michaelmcleroy @egoode
-
-^[Charter Owners]
-charter/              @runyontr @joshwolf
-
-^[Istio and Authservice]
-chart/Chart.yaml                @kenna81 @kavitha @cmcgrath @nick_tetrate
-chart/values.yaml               @kenna81 @kavitha @cmcgrath @nick_tetrate
-chart/templates/authservice     @kenna81 @kavitha @cmcgrath 
-chart/templates/istio           @kenna81 @kavitha @cmcgrath @nick_tetrate
-
-^[Anchore]
-chart/Chart.yaml                @blake.hearn @micah.nagel @jasonkrause
-chart/values.yaml               @blake.hearn @micah.nagel @jasonkrause
-chart/templates/anchore         @blake.hearn @micah.nagel @jasonkrause
-
-^[ArgoCD]
-chart/Chart.yaml                @matthew.kaiser @brian.rexrode
-chart/values.yaml               @matthew.kaiser @brian.rexrode
-chart/templates/argocd          @matthew.kaiser @brian.rexrode
-
-# ^[Cluster Auditor]
-# chart/Chart.yaml
-# chart/values.yaml
-# chart/templates/clusterauditor
-
-# ^[Gatekeeper]
-# chart/Chart.yaml              @toladipupo
-# chart/values.yaml             @toladipupo   
-# chart/templates/gatekeeper    @toladipupo
-
-^[Logging]
-chart/Chart.yaml                @kavitha @ryan.j.garcia
-chart/values.yaml               @kavitha @ryan.j.garcia
-chart/templates/logging         @kavitha @ryan.j.garcia
-
-^[Monitoring]
-chart/Chart.yaml                @lynnstill @ryan.j.garcia
-chart/values.yaml               @lynnstill @ryan.j.garcia
-chart/templates/monitoring      @lynnstill @ryan.j.garcia
-
-^[Twistlock]
-chart/Chart.yaml                @thomas.burton
-chart/values.yaml               @thomas.burton
-chart/templates/twistlock       @thomas.burton
-
-^[Gitlab]
-chart/Chart.yaml                @egoode @kevin.wilder
-chart/values.yaml               @egoode @kevin.wilder
-chart/templates/gitlab          @egoode @kevin.wilder
-
-^[KeyCloak]
-chart/Chart.yaml                @megamind
-chart/values.yaml               @megamind
-chart/templates/keycloak        @megamind
-
-
+# Does not allow the creator of the merge request to be the approver.
+/docs/                         @brandencobb @cmcgrath @echuang @evan.rush @jasonkrause @kenna81 @kevin.wilder @LynnStill @micah.nagel @michaelmartin @michaelmcleroy @runyontr @ryan.j.garcia @toladipupo @ronwebb @ryan.thompson.44 @gabe @razzle @lucas.rodriguez 
 

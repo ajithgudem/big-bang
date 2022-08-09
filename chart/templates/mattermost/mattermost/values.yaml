@@ -3,10 +3,21 @@
 {{- end }}
 
 {{- define "bigbang.defaults.mattermost" -}}
-hostname: {{ .Values.hostname }}
+# hostname is deprecated and replaced with domain. But if hostname exists then use it.
+{{- $domainName := default .Values.domain .Values.hostname }}
+hostname: {{ $domainName }}
+domain: {{ $domainName }}
 
+openshift: {{ .Values.openshift }}
+
+image:
+  imagePullPolicy: {{ .Values.imagePullPolicy }}
+  
 istio:
   enabled: {{ .Values.istio.enabled }}
+  chat:
+    gateways:
+    - istio-system/{{ default "public" .Values.addons.mattermost.ingress.gateway }}
 
 monitoring:
   enabled: {{ .Values.monitoring.enabled }}
@@ -21,6 +32,13 @@ sso:
   user_api_endpoint: {{ .user_api_endpoint | default (printf "https://%s/api/v4/user" $.Values.sso.oidc.host) }}
 {{- end }}
 
+networkPolicies:
+  enabled: {{ .Values.networkPolicies.enabled }}
+  ingressLabels:
+    {{- $gateway := default "public" .Values.addons.mattermost.ingress.gateway }}
+    {{- $default := dict "app" (dig "gateways" $gateway "ingressGateway" nil .Values.istio) "istio" nil }}
+    {{- toYaml (dig "values" "gateways" $gateway "selector" $default .Values.istio) | nindent 4 }}
+
 global:
   imagePullSecrets:
     - name: private-registry
@@ -32,7 +50,7 @@ enterprise:
 {{- end }}
 
 {{- with .Values.addons.mattermost.database }}
-{{- if and .username .password .host .port .database .ssl_mode }}
+{{- if and .username .password .host .port .database }}
 database:
   secret: "mattermost-database-secret"
 {{- else }}
@@ -56,6 +74,16 @@ minio:
   install: true
   accessKey: {{ .accessKey | default "minio" }}
   secretKey: {{ .secretKey | default "BigBangDEVONLY" }}
+  imagePullSecrets:
+    - name: private-registry
+  tenants:
+    metrics:
+      enabled: {{ $.Values.monitoring.enabled }}
 {{- end }}
+{{- end }}
+
+{{- if .Values.addons.mattermost.elasticsearch.enabled }}
+elasticsearch:
+  enabled: true
 {{- end }}
 {{- end -}}
